@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Contact:</b>
+  <%= @lead.contact %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%= @lead.telephone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @lead.email %>
+</p>
+
+<p>
+  <b>Organisation:</b>
+  <%= @lead.organisation %>
+</p>
+
+<p>
+  <b>Created:</b>
+  <%= @lead.created_at %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @lead.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= simple_format @lead.description %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @lead.status %>
+</p>
+
+<h2>Notes</h2>
+
+<% @lead.notes.each do |note| -%>
+<p>
+  <b><%= human_time note.created_at %> - <%= note.title %></b>
+  <%= simple_format note.body %>
+</p>
+<% end -%>
+
+
+<%= link_to 'Edit', edit_user_lead_path(@user, @lead) %> |
+<%= link_to 'Back', user_leads_path(@user) %> |
+<%= link_to 'New Note', new_user_lead_note_path(@user, @lead) %>
