@@ -1,16 +1,19 @@
-<h1>Listing leads</h1>
+<h1>Your leads</h1>
 
-<table>
-  <tr>
-    <th>Contact</th>
-    <th>Organisation</th>
-    <th>Title</th>
-    <th>Status</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Contact</th>
+      <th>Organisation</th>
+      <th>Title</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
+  </tbody>
 <% @leads.each do |lead| %>
   <tr>
     <td><%= lead.contact %></td>
@@ -22,6 +25,7 @@
     <td><%= link_to 'Destroy', [@user, lead], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+  </tbody>
 </table>
 
 <br />

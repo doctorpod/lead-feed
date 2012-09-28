@@ -5,10 +5,14 @@ class LeadsController < ApplicationController
   # GET /leads.json
   def index
     @leads = @user.leads.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @leads }
+    
+    if @leads.empty?
+      if flash[:notice] && flash[:notice].match(/welcome to/i)
+        notice = "#{flash[:notice]}<br />Create your first lead"
+      else
+        notice = "Create your first lead"
+      end
+      redirect_to new_user_lead_path(@user), :notice => notice
     end
   end
 
@@ -86,7 +90,7 @@ class LeadsController < ApplicationController
   private
   
   def get_user_and_authorise
-    @user = User.find params[:user_id]
+    @user = current_user #User.find params[:user_id]
     authorise @user
   end
 end

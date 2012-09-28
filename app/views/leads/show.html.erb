@@ -1,52 +1,24 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @lead.title %><br />
+  <small><%= @lead.contact %> <%= @lead.organisation %></small></h1>
+</div>
 
-<p>
-  <b>Contact:</b>
-  <%= @lead.contact %>
-</p>
+<%= simple_format @lead.description %>
 
-<p>
-  <b>Telephone:</b>
-  <%= @lead.telephone %>
-</p>
+<small>
+  Tel: <%= @lead.telephone %> |
+  Email: <%= @lead.email %> |
+  Created: <cite title="<%= @lead.created_at.to_s %>"><%= human_time @lead.created_at %></cite> |
+  Status: <%= @lead.status %>
+</small>
 
-<p>
-  <b>Email:</b>
-  <%= @lead.email %>
-</p>
-
-<p>
-  <b>Organisation:</b>
-  <%= @lead.organisation %>
-</p>
-
-<p>
-  <b>Created:</b>
-  <%= @lead.created_at %>
-</p>
-
-<p>
-  <b>Title:</b>
-  <%= @lead.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= simple_format @lead.description %>
-</p>
-
-<p>
-  <b>Status:</b>
-  <%= @lead.status %>
-</p>
-
-<h2>Notes</h2>
+<h3>Notes</h3>
 
 <% @lead.notes.each do |note| -%>
-<p>
-  <b><%= human_time note.created_at %> - <%= note.title %></b>
-  <%= simple_format note.body %>
-</p>
+<blockquote>
+  <p><%= simple_format note.body %></p>
+  <small><cite title="<%= note.created_at.to_s %>"><%= human_time note.created_at %></cite></small>
+</blockquote>
 <% end -%>
 
 

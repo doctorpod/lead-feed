@@ -4,5 +4,5 @@ class Lead < ActiveRecord::Base
   STATES = ['INTEREST', 'MET', 'PROPOSED', 'WON', 'DEAD']
   
   belongs_to :user
-  has_many :notes
+  has_many :notes, :order => 'created_at DESC'
 end

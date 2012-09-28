@@ -1,4 +1,4 @@
-<%= form_for([@user, @lead]) do |f| %>
+<%= form_for([@user, @lead], :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @lead.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
@@ -11,35 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :contact %><br />
-    <%= f.text_field :contact %>
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls"><%= f.text_field :title %></div>
   </div>
-  <div class="field">
-    <%= f.label :telephone %><br />
-    <%= f.text_field :telephone %>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls"><%= f.text_area :description, :rows => 5 %></div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+  <div class="control-group">
+    <%= f.label :contact, :class => 'control-label' %>
+    <div class="controls"><%= f.text_field :contact %></div>
   </div>
-  <div class="field">
-    <%= f.label :organisation %><br />
-    <%= f.text_field :organisation %>
+  <div class="control-group">
+    <%= f.label :telephone, :class => 'control-label' %>
+    <div class="controls"><%= f.text_field :telephone %></div>
   </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
+  <div class="control-group">
+    <%= f.label :email, :class => 'control-label' %>
+    <div class="controls"><%= f.text_field :email %></div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+  <div class="control-group">
+    <%= f.label :organisation, :class => 'control-label' %>
+    <div class="controls"><%= f.text_field :organisation %></div>
   </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.select :status, Lead::STATES %>
+  <div class="control-group">
+    <%= f.label :status, :class => 'control-label' %>
+    <div class="controls"><%= f.select :status, Lead::STATES %></div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

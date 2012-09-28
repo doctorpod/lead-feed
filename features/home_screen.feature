@@ -1,3 +1,4 @@
+@ok
 Feature: Home Page
   In order to get new users
   As a app farmer
@@ -7,5 +8,5 @@ Feature: Home Page
     Given I am a new visitor
     When I go to the home page
     Then I should see "Welcome to Pipeline"
-    And I should see "sign up"
-    And I should see "log in"
+    And I should see "Sign up"
+    And I should see "Log in"
