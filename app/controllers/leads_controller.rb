@@ -23,7 +23,7 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @lead }
+      format.json { render :json => @lead }
     end
   end
 
@@ -34,7 +34,7 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @lead }
+      format.json { render :json => @lead }
     end
   end
 
@@ -50,11 +50,11 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
-        format.html { redirect_to [@user, @lead], notice: 'Lead was successfully created.' }
-        format.json { render json: @lead, status: :created, location: @lead }
+        format.html { redirect_to [@user, @lead], :notice => 'Lead was successfully created.' }
+        format.json { render :json => @lead, :status => :created, :location => @lead }
       else
-        format.html { render action: "new" }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @lead.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -66,11 +66,11 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.update_attributes(params[:lead])
-        format.html { redirect_to [@user, @lead], notice: 'Lead was successfully updated.' }
+        format.html { redirect_to [@user, @lead], :notice => 'Lead was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @lead.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @lead.errors, :status => :unprocessable_entity }
       end
     end
   end

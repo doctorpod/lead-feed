@@ -8,7 +8,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @note }
+      format.json { render :json => @note }
     end
   end
 
@@ -18,11 +18,11 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to [@user, @lead], notice: 'Note was successfully created.' }
-        format.json { render json: @note, status: :created, location: @note }
+        format.html { redirect_to [@user, @lead], :notice => 'Note was successfully created.' }
+        format.json { render :json => @note, :status => :created, :location => @note }
       else
-        format.html { render action: "new" }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @note.errors, :status => :unprocessable_entity }
       end
     end
   end
