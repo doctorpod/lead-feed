@@ -22,10 +22,12 @@ test: &test
   socket: /tmp/mysql.sock
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql
+  encoding: utf8
+  database: leadfeed_production
+  username: leadfeed
+  password: 5181eedLD35
+  host: mysql.leadfeed.co.uk
 
 cucumber:
   <<: *test
