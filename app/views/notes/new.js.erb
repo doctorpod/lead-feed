@@ -1,0 +1,9 @@
+$("#add_note_link").hide();
+$("#new_note_form").html("<%= escape_javascript(render 'form') %>");
+
+$("#form_cancel").click(function() {
+  $("#new_note_form").empty('slow');
+  $("#add_note_link").show();
+});
+
+$("#new_note_body").focus();

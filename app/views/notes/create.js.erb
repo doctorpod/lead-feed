@@ -1,0 +1,3 @@
+$("#new_note_form").empty();
+$("#add_note_link").show();
+$("#notes").prepend("<%= escape_javascript(render @note) %>");

@@ -1,10 +1,8 @@
 Pipeline::Application.routes.draw do
   devise_for :users
   
-  resources :users do
-    resources :leads do
-      resources :notes 
-    end
+  resources :leads do
+    resources :notes 
   end
 
   # The priority is based upon order of creation:

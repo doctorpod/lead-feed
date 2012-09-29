@@ -1,27 +1,27 @@
 <div class="page-header">
   <h1><%= @lead.title %><br />
-  <small><%= @lead.contact %> <%= @lead.organisation %></small></h1>
+  <small><%= @lead.human_contact %></small></h1>
 </div>
 
 <%= simple_format @lead.description %>
 
 <small>
-  Tel: <%= @lead.telephone %> |
-  Email: <%= @lead.email %> |
-  Created: <cite title="<%= @lead.created_at.to_s %>"><%= human_time @lead.created_at %></cite> |
+  Tel: <%= link_to @lead.telephone, "callto:#{@lead.telephone}" %> |
+  Email: <%= link_to @lead.email, "mailto:#{@lead.email}" %> |
+  Last Contacted: <cite title="<%= @lead.last_contacted.to_s %>"><%= human_date @lead.last_contacted %></cite> |
   Status: <%= @lead.status %>
 </small>
+<br />
+<br />
+<%= link_to 'Edit Lead', edit_lead_path(@lead), :class => "btn btn-small" %>
 
 <h3>Notes</h3>
+<%= link_to 'Add note', new_lead_note_path(@lead), :id => 'add_note_link', :remote => true, :class => "btn btn-small" %>
+<div id="new_note_form"></div>
 
-<% @lead.notes.each do |note| -%>
-<blockquote>
-  <p><%= simple_format note.body %></p>
-  <small><cite title="<%= note.created_at.to_s %>"><%= human_time note.created_at %></cite></small>
-</blockquote>
-<% end -%>
-
-
-<%= link_to 'Edit', edit_user_lead_path(@user, @lead) %> |
-<%= link_to 'Back', user_leads_path(@user) %> |
-<%= link_to 'New Note', new_user_lead_note_path(@user, @lead) %>
+<br />
+<div id="notes">
+  <% @lead.notes.each do |note| -%>
+    <%= render note %>
+  <% end -%>
+</div>

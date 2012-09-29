@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120924104608) do
+ActiveRecord::Schema.define(:version => 20120929203559) do
 
   create_table "leads", :force => true do |t|
     t.string   "contact"
@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(:version => 20120924104608) do
     t.string   "title"
     t.text     "description"
     t.string   "status"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "user_id"
+    t.date     "last_contacted"
   end
 
   add_index "leads", ["user_id"], :name => "index_leads_on_user_id"
 
   create_table "notes", :force => true do |t|
     t.integer  "lead_id"
-    t.string   "title"
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

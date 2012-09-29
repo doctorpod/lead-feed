@@ -1,0 +1,8 @@
+<blockquote>
+  <%= simple_format note.body %>
+  <small>
+    <cite title="<%= note.created_at.to_s %>">
+      <%= human_time note.created_at %>
+    </cite>
+  </small>
+</blockquote>

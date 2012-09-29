@@ -1,4 +1,4 @@
-<%= form_for([@user, @lead], :html => {:class => 'form-horizontal'}) do |f| %>
+<%= form_for(@lead, :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @lead.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
@@ -36,12 +36,16 @@
     <div class="controls"><%= f.text_field :organisation %></div>
   </div>
   <div class="control-group">
+    <%= f.label :last_contacted, :class => 'control-label' %>
+    <div class="controls"><%= f.text_field :last_contacted %></div>
+  </div>
+  <div class="control-group">
     <%= f.label :status, :class => 'control-label' %>
     <div class="controls"><%= f.select :status, Lead::STATES %></div>
   </div>
   <div class="control-group">
     <div class="controls">
-      <%= f.submit %>
+      <%= f.submit :class => "btn" %>
     </div>
   </div>
 <% end %>

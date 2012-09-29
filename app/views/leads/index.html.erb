@@ -3,11 +3,10 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Lead</th>
       <th>Contact</th>
-      <th>Organisation</th>
-      <th>Title</th>
+      <th>Last Contacted</th>
       <th>Status</th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -16,13 +15,13 @@
   </tbody>
 <% @leads.each do |lead| %>
   <tr>
-    <td><%= lead.contact %></td>
-    <td><%= lead.organisation %></td>
     <td><%= lead.title %></td>
+    <td><%= lead.human_contact %></td>
+    <td><%= human_date lead.last_contacted %></td>
     <td><%= lead.status %></td>
-    <td><%= link_to 'Show', [@user, lead] %></td>
-    <td><%= link_to 'Edit', edit_user_lead_path(@user, lead) %></td>
-    <td><%= link_to 'Destroy', [@user, lead], :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', lead %></td>
+    <td><%= link_to 'Edit', edit_lead_path(lead), :class => "btn btn-small" %></td>
+    <td><%= link_to 'Delete', lead, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-small" %></td>
   </tr>
 <% end %>
   </tbody>
@@ -30,4 +29,4 @@
 
 <br />
 
-<%= link_to 'New Lead', new_user_lead_path(@user) %>
+<%= link_to 'New Lead', new_lead_path, :class => "btn" %>

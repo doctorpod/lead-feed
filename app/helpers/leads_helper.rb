@@ -15,4 +15,17 @@ module LeadsHelper
       time.strftime("%H:%M")
     end
   end
+  
+  def human_date(d)
+    return nil if d.nil?
+    today = Date.today
+    
+    if d == today
+      "today"
+    elsif d == (today-1)
+      "yesterday"
+    else
+      d.strftime("%a %d-%b-%Y")
+    end
+  end
 end
