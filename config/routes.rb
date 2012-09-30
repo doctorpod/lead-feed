@@ -4,6 +4,8 @@ Pipeline::Application.routes.draw do
   resources :leads do
     resources :notes 
   end
+  
+  get 'tags/:tag', :to => 'leads#index', :as => :tag
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

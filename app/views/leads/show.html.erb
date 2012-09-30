@@ -9,7 +9,8 @@
   Tel: <%= link_to @lead.telephone, "callto:#{@lead.telephone}" %> |
   Email: <%= link_to @lead.email, "mailto:#{@lead.email}" %> |
   Last Contacted: <cite title="<%= @lead.last_contacted.to_s %>"><%= human_date @lead.last_contacted %></cite> |
-  Status: <%= @lead.status %>
+  Status: <%= @lead.status %> |
+  Tags: <%= @lead.tag_list %>
 </small>
 <br />
 <br />

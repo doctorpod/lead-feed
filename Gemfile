@@ -51,3 +51,4 @@ end
 
 gem 'rspec-rails', '>= 2.11.0', :group => [:development, :test]
 gem 'devise'
+gem 'acts-as-taggable-on'

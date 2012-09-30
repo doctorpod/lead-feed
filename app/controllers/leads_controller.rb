@@ -4,7 +4,11 @@ class LeadsController < ApplicationController
   # GET /leads
   # GET /leads.json
   def index
-    @leads = current_user.leads.order(:last_contacted).all
+    if params[:tag]
+      @leads = current_user.leads.tagged_with(params[:tag]).order(:last_contacted)
+    else
+      @leads = current_user.leads.order(:last_contacted).all
+    end
     
     if @leads.empty?
       if flash[:notice] && flash[:notice].match(/welcome to/i)
