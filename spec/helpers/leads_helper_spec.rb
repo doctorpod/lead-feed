@@ -20,9 +20,19 @@ describe LeadsHelper do
       helper.human_time(Time.mktime(Time.now.year,1,3)).should == "03 Jan"
     end
 
-    it "shows weekday if this week" do
-      three_days_ago = Time.now-(3*24*60*60)
-      helper.human_time(three_days_ago).should == three_days_ago.wday
+    it "shows day, month if 7 days ago" do
+      seven_days_ago = Time.now-(7*24*60*60)
+      helper.human_time(seven_days_ago).should == seven_days_ago.strftime("%d %b")
+    end
+
+    it "shows weekday if 6 days ago" do
+      six_days_ago = Time.now-(6*24*60*60)
+      helper.human_time(six_days_ago).should == six_days_ago.strftime("%A")
+    end
+
+    it "shows weekday if 2 days ago" do
+      two_days_ago = Time.now-(2*24*60*60)
+      helper.human_time(two_days_ago).should == two_days_ago.strftime("%A")
     end
 
     it "shows yesterday if yesterday" do

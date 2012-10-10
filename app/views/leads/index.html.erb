@@ -1,9 +1,12 @@
 <h1>Your leads</h1>
-<div id="tag_cloud" class="pull-right">
-  <% tag_cloud(Lead.tag_counts, %w(s m l)) do |tag, css_class| %>
+
+<% content_for :sidebar do %>
+<div id="tag_cloud">
+  <% tag_cloud(Lead.tag_counts(current_user.id), %w(s m l)) do |tag, css_class| %>
     <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
   <% end %>
 </div>
+<% end %>
 
 <table class="table table-striped">
   <thead>

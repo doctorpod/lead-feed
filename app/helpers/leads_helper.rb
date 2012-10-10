@@ -8,7 +8,7 @@ module LeadsHelper
     elsif time.yday < now.yday-6
       time.strftime("%d %b")
     elsif time.yday < now.yday-1
-      time.wday
+      time.strftime("%A")
     elsif time.yday == now.yday-1
       "yesterday"
     else

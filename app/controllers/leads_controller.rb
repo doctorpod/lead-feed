@@ -7,7 +7,7 @@ class LeadsController < ApplicationController
     if params[:tag]
       @leads = current_user.leads.tagged_with(params[:tag]).order(:last_contacted)
     else
-      @leads = current_user.leads.order(:last_contacted).all
+      @leads = current_user.leads.order(:last_contacted)
     end
     
     if @leads.empty?
