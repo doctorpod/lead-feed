@@ -13,11 +13,17 @@ class Lead < ActiveRecord::Base
   # http://stackoverflow.com/questions/12661633/missing-column-error-in-acts-as-taggable-on-gem-with-rails-3-and-sqlite3
   # Have also modified it to partition the counts by user_id
   def self.tag_counts(user_id)
-    results = connection.execute(
+    # Assuming MySQL
+    mysql_results = connection.execute(
       "SELECT t.id AS id, t.name AS name, COUNT(x.tag_id) AS count " + 
       "FROM tags t, taggings x, leads l " +
       "WHERE t.id = x.tag_id AND x.taggable_id = l.id AND l.user_id = #{user_id} " +
       "GROUP BY t.name")
+    
+    results = []
+    mysql_results.each_hash do |h|
+      results << h
+    end
     
     results.map do |result|
       ActsAsTaggableOn::Tag.select("*, #{result['count']} AS count").where("id = #{result['id']}").first
