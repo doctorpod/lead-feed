@@ -1,11 +1,25 @@
 <h1>Your leads</h1>
 
 <% content_for :sidebar do %>
-<div id="tag_cloud">
-  <% tag_cloud(Lead.tag_counts(current_user.id), %w(s m l)) do |tag, css_class| %>
-    <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
-  <% end %>
-</div>
+  <div id="tag_cloud">
+    <% tag_cloud(Lead.tag_counts(current_user.id), %w(s m l)) do |tag, css_class| %>
+      <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
+    <% end %>
+  </div>
+  
+  <hr />
+  
+  <div id="hiders">
+    <label class="checkbox">
+      <%= check_box_tag :hide_won %>
+      Hide WON
+    </label>
+    
+    <label class="checkbox">
+      <%= check_box_tag :hide_dead %>
+      Hide DEAD
+    </label>
+  </div>
 <% end %>
 
 <table class="table table-striped">
@@ -22,7 +36,7 @@
 
   </tbody>
 <% @leads.each do |lead| %>
-  <tr>
+  <tr class="lead <%= lead.status.downcase %>">
     <td><%= lead.title %></td>
     <td><%= lead.human_contact %></td>
     <td><%= human_date lead.last_contacted %></td>
