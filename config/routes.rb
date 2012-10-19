@@ -6,6 +6,8 @@ Pipeline::Application.routes.draw do
   end
   
   get 'tags/:tag', :to => 'leads#index', :as => :tag
+  post 'users/update_hide_won', :to => 'users#update_hide_won'
+  post 'users/update_hide_dead', :to => 'users#update_hide_dead'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -28,6 +28,7 @@ group :test do
   gem 'cucumber-rails', '>=0.3.2', :require => false
   gem 'spork'
   gem 'launchy'    # So you can do Then show me the page
+  gem 'selenium-client', '>= 1.2.18'
 end
 
 gem 'rspec-rails', '>= 2.11.0', :group => [:development, :test]

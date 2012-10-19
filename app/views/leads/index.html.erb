@@ -11,12 +11,12 @@
   
   <div id="hiders">
     <label class="checkbox">
-      <%= check_box_tag :hide_won %>
+      <%= check_box_tag :hide_won, 1, current_user.hide_won %>
       Hide WON
     </label>
     
     <label class="checkbox">
-      <%= check_box_tag :hide_dead %>
+      <%= check_box_tag :hide_dead, 1, current_user.hide_dead %>
       Hide DEAD
     </label>
   </div>

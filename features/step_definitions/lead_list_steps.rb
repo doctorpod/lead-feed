@@ -12,5 +12,13 @@ When /^I create a lead "([^"]*)", with a status of "([^"]*)"$/ do |lead_title, s
 end
 
 Then /^I should see (\d+) leads? listed$/ do |item_count|
-  find("tr.lead", :count => item_count.to_i)
+  page.all("tr.lead").count.should == item_count.to_i
+end
+
+When /^I wait (\d+) seconds?$/ do |secs|
+  sleep secs.to_i
+end
+
+Then /^(\d+) rows? should be hidden$/ do |count|
+  page.all(:xpath, "//tr[@style='display: none;']").count.should == count.to_i
 end

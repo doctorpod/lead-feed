@@ -7,7 +7,7 @@ class Lead < ActiveRecord::Base
   acts_as_taggable
   
   belongs_to :user
-  has_many :notes, :order => 'created_at DESC'
+  has_many :notes, :order => 'created_at DESC', :dependent => :delete_all
   
   # Had to override this here as there seems to be a bug in acts_as_taggable
   # http://stackoverflow.com/questions/12661633/missing-column-error-in-acts-as-taggable-on-gem-with-rails-3-and-sqlite3

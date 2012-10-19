@@ -1,0 +1,1 @@
+check_hide_won();

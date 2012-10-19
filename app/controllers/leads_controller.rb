@@ -24,11 +24,11 @@ class LeadsController < ApplicationController
   # GET /leads/1.json
   def show
     @lead = current_user.leads.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render :json => @lead }
-    end
+    # 
+    # respond_to do |format|
+    #   format.html render :show, :layout => 'lead_show'
+    #   format.json { render :json => @lead }
+    # end
   end
 
   # GET /leads/new

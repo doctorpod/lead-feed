@@ -1,28 +1,33 @@
-<div class="page-header">
-  <h1><%= @lead.title %><br />
-  <small><%= @lead.human_contact %></small></h1>
+<div class="show-lead">
+  <div class="page-header">
+    <h1><%= @lead.title %><br />
+    <small><%= @lead.human_contact %></small></h1>
+  </div>
+
+  <%= simple_format @lead.description %>
+
+  <small>
+    Tel: <%= link_to @lead.telephone, "callto:#{@lead.telephone}" %> |
+    Email: <%= link_to @lead.email, "mailto:#{@lead.email}" %> |
+    Last Contacted: <cite title="<%= @lead.last_contacted.to_s %>"><%= human_date @lead.last_contacted %></cite> |
+    Status: <%= @lead.status %> |
+    Tags: <%= @lead.tag_list %>
+  </small>
+
+  <br />
+  <br />
+  <%= link_to 'Edit Lead', edit_lead_path(@lead), :class => "btn btn-small" %>
 </div>
 
-<%= simple_format @lead.description %>
+<% content_for :sidebar do %>
+  <h3>Notes</h3>
+  <%= link_to 'Add note', new_lead_note_path(@lead), :id => 'add_note_link', :remote => true, :class => "btn btn-small" %>
+  <div id="new_note_form"></div>
 
-<small>
-  Tel: <%= link_to @lead.telephone, "callto:#{@lead.telephone}" %> |
-  Email: <%= link_to @lead.email, "mailto:#{@lead.email}" %> |
-  Last Contacted: <cite title="<%= @lead.last_contacted.to_s %>"><%= human_date @lead.last_contacted %></cite> |
-  Status: <%= @lead.status %> |
-  Tags: <%= @lead.tag_list %>
-</small>
-<br />
-<br />
-<%= link_to 'Edit Lead', edit_lead_path(@lead), :class => "btn btn-small" %>
-
-<h3>Notes</h3>
-<%= link_to 'Add note', new_lead_note_path(@lead), :id => 'add_note_link', :remote => true, :class => "btn btn-small" %>
-<div id="new_note_form"></div>
-
-<br />
-<div id="notes">
-  <% @lead.notes.each do |note| -%>
-    <%= render note %>
-  <% end -%>
-</div>
+  <br />
+  <div id="notes">
+    <% @lead.notes.each do |note| -%>
+      <%= render note %>
+    <% end -%>
+  </div>
+<% end %>

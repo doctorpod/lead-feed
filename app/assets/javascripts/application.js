@@ -14,6 +14,3 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-$(function (){
-  $("#lead_last_contacted").datepicker({ dateFormat: "yy-mm-dd" });
-});

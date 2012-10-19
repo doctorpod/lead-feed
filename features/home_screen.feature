@@ -7,6 +7,6 @@ Feature: Home Page
   Scenario: Visit Home Page as new visitor
     Given I am a new visitor
     When I go to the home page
-    Then I should see "Welcome to Pipeline"
+    Then I should see "Welcome to LeadFeed"
     And I should see "Sign up"
     And I should see "Log in"
