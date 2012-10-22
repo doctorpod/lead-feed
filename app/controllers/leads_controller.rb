@@ -17,6 +17,10 @@ class LeadsController < ApplicationController
         notice = "Create your first lead"
       end
       redirect_to new_lead_path, :notice => notice
+    else
+      @won_count = current_user.leads.won.count
+      @dead_count = current_user.leads.dead.count
+      @total_count = current_user.leads.count
     end
   end
 

@@ -1,6 +1,9 @@
 class Lead < ActiveRecord::Base
   attr_accessible :contact, :description, :email, :organisation, :status, 
                   :telephone, :title, :user_id, :last_contacted, :tag_list
+                  
+  validates :title, :presence => true
+  validates :description, :presence => true
   
   STATES = ['INTEREST', 'MEETINGS', 'PROPOSED', 'WON', 'DEAD']
   
@@ -8,6 +11,9 @@ class Lead < ActiveRecord::Base
   
   belongs_to :user
   has_many :notes, :order => 'created_at DESC', :dependent => :delete_all
+  
+  scope :won, where("status = 'WON'")
+  scope :dead, where("status = 'DEAD'")
   
   # Had to override this here as there seems to be a bug in acts_as_taggable
   # http://stackoverflow.com/questions/12661633/missing-column-error-in-acts-as-taggable-on-gem-with-rails-3-and-sqlite3

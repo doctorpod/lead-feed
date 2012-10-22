@@ -20,9 +20,30 @@
       Hide DEAD
     </label>
   </div>
+  
+  <br />
+  <div id="counts">
+    <table class="table table-striped">
+      <tr>
+        <td>WON</td>
+        <td><%= @won_count %></td>
+        <td><%= ((@won_count/@total_count.to_f)*100).round %>%</td>
+      </tr>
+      <tr>
+        <td>DEAD</td>
+        <td><%= @dead_count %></td>
+        <td><%= ((@dead_count/@total_count.to_f)*100).round %>%</td>
+      </tr>
+      <tr>
+        <td>TOTAL</td>
+        <td><%= @total_count %></td>
+        <td>100%</td>
+      </tr>
+    </table>
+  </div>
 <% end %>
 
-<table class="table table-striped">
+<table class="table">
   <thead>
     <tr>
       <th>Lead</th>
