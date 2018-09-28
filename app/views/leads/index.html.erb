@@ -2,25 +2,25 @@
 
 <% content_for :sidebar do %>
   <div id="tag_cloud">
-    <% tag_cloud(Lead.tag_counts(current_user.id), %w(s m l)) do |tag, css_class| %>
-      <%= link_to tag.name, tag_path(tag.name), :class => css_class %>
-    <% end %>
+    <%# tag_cloud(Lead.tag_counts(current_user.id), %w(s m l)) do |tag, css_class| %>
+      <%#= link_to tag.name, tag_path(tag.name), :class => css_class %>
+    <%# end %>
   </div>
-  
+
   <hr />
-  
+
   <div id="hiders">
     <label class="checkbox">
       <%= check_box_tag :hide_won, 1, current_user.hide_won %>
       Hide WON
     </label>
-    
+
     <label class="checkbox">
       <%= check_box_tag :hide_dead, 1, current_user.hide_dead %>
       Hide DEAD
     </label>
   </div>
-  
+
   <br />
   <div id="counts">
     <table class="table table-striped">
